@@ -1,0 +1,88 @@
+SYSTEM CALL SEQUENCE ANALYSIS REPORT
+==================================================
+
+PROCESS: GUARDIAN.EXE
+------------------------------
+Common Sequence (8 steps):
+    1. LoadLibrary (25.4ms avg)
+    2. CreateFile (544.6ms avg) ⚠️ PERFORMANCE ISSUE
+    3. ReadFile (547.7ms avg) ⚠️ PERFORMANCE ISSUE
+    4. WriteFile (25.4ms avg)
+    5. CreateThread (25.9ms avg)
+    6. RegSetValue (24.6ms avg)
+    7. LogEvent (25.6ms avg)
+    8. QuarantineFile (26.5ms avg)
+
+Cases analyzed: 704
+Performance issues: CreateFile, ReadFile
+
+==================================================
+
+PROCESS: NOTEPAD.EXE
+------------------------------
+Common Sequence (8 steps):
+    1. CreateFile (25.7ms avg)
+    2. ReadFile (548.9ms avg) ⚠️ PERFORMANCE ISSUE
+    3. WriteFile (552.6ms avg) ⚠️ PERFORMANCE ISSUE
+    4. CloseHandle (25.4ms avg)
+    5. FreeLibrary (25.4ms avg)
+    6. TerminateProcess (25.7ms avg)
+    7. GetFileSize (25.5ms avg)
+    8. FlushFileBuffers (24.8ms avg)
+
+Cases analyzed: 1228
+Performance issues: ReadFile, WriteFile
+
+==================================================
+
+PROCESS: CHROME.EXE
+------------------------------
+Common Sequence (8 steps):
+    1. CreateFile (25.5ms avg)
+    2. RegOpenKey (25.4ms avg)
+    3. ReadFile (543.9ms avg) ⚠️ PERFORMANCE ISSUE
+    4. WriteFile (25.4ms avg)
+    5. VirtualAlloc (553.0ms avg) ⚠️ PERFORMANCE ISSUE
+    6. CreateThread (548.6ms avg) ⚠️ PERFORMANCE ISSUE
+    7. WaitForSingleObject (541.4ms avg) ⚠️ PERFORMANCE ISSUE
+    8. RegQueryValue (25.7ms avg)
+
+Cases analyzed: 1481
+Performance issues: ReadFile, VirtualAlloc, CreateThread, WaitForSingleObject
+
+==================================================
+
+PROCESS: EXPLORER.EXE
+------------------------------
+Common Sequence (8 steps):
+    1. CreateProcess (25.4ms avg)
+    2. LoadLibrary (25.4ms avg)
+    3. CreateFile (534.2ms avg) ⚠️ PERFORMANCE ISSUE
+    4. RegOpenKey (25.5ms avg)
+    5. ReadFile (550.5ms avg) ⚠️ PERFORMANCE ISSUE
+    6. VirtualAlloc (25.3ms avg)
+    7. GetFileTime (25.8ms avg)
+    8. GetFileAttributes (25.1ms avg)
+
+Cases analyzed: 1074
+Performance issues: CreateFile, ReadFile
+
+==================================================
+
+PROCESS: SYSTEM
+------------------------------
+Common Sequence (8 steps):
+    1. CreateProcess (26.1ms avg)
+    2. RegOpenKey (26.4ms avg)
+    3. VirtualAlloc (25.8ms avg)
+    4. WaitForSingleObject (533.2ms avg) 🚨 CRITICAL BOTTLENECK
+    5. VirtualFree (26.5ms avg)
+    6. RemoveDirectory (24.9ms avg)
+    7. HeapCompact (25.7ms avg)
+    8. FindFirstFile (25.7ms avg)
+
+Cases analyzed: 513
+Critical bottlenecks: WaitForSingleObject
+
+==================================================
+

@@ -1,0 +1,106 @@
+BASELINE PERFORMANCE MEASUREMENT REPORT
+=============================================
+
+MEASUREMENT METHODOLOGY:
+-------------------------
+• Dataset: 373,828 system call events over 24-hour period
+• Target bottlenecks: Top 3 identified via prioritization analysis
+• Metrics: Comprehensive statistical analysis including percentiles, distribution analysis
+• Outlier detection: IQR method (1.5 × IQR beyond Q1/Q3)
+
+BASELINE PERFORMANCE SUMMARY:
+===================================
+
+1. NOTEPAD.EXE - ReadFile
+----------------------------------------
+Performance Metrics:
+  • Total Events: 1,247
+  • Mean Duration: 548.9ms
+  • Median Duration: 546.0ms
+  • Standard Deviation: 259.6ms
+  • 95th Percentile: 951.9ms
+  • 99th Percentile: 988.4ms
+  • Min/Max Duration: 101.6ms / 999.6ms
+
+Impact Analysis:
+  • Total Time Impact: 684.5 seconds
+  • Affected Cases: 842
+  • Events per Hour: 52.0
+  • Peak Hour: 12:00 (74 events)
+
+Statistical Characteristics:
+  • Distribution Type: Normal-like
+  • Coefficient of Variation: 0.47
+  • Outlier Count: 0 (0.0%)
+
+Performance Assessment: 🟠 HIGH - Significant performance impact
+==================================================
+
+2. GUARDIAN.EXE - ReadFile
+----------------------------------------
+Performance Metrics:
+  • Total Events: 1,024
+  • Mean Duration: 547.7ms
+  • Median Duration: 540.3ms
+  • Standard Deviation: 263.0ms
+  • 95th Percentile: 957.9ms
+  • 99th Percentile: 992.3ms
+  • Min/Max Duration: 100.1ms / 999.6ms
+
+Impact Analysis:
+  • Total Time Impact: 560.8 seconds
+  • Affected Cases: 544
+  • Events per Hour: 42.7
+  • Peak Hour: 00:00 (71 events)
+
+Statistical Characteristics:
+  • Distribution Type: Normal-like
+  • Coefficient of Variation: 0.48
+  • Outlier Count: 0 (0.0%)
+
+Performance Assessment: 🟠 HIGH - Significant performance impact
+==================================================
+
+3. EXPLORER.EXE - RegQueryValue
+----------------------------------------
+Performance Metrics:
+  • Total Events: 80
+  • Mean Duration: 28.1ms
+  • Median Duration: 30.2ms
+  • Standard Deviation: 14.0ms
+  • 95th Percentile: 49.1ms
+  • 99th Percentile: 49.6ms
+  • Min/Max Duration: 1.2ms / 49.8ms
+
+Impact Analysis:
+  • Total Time Impact: 2.2 seconds
+  • Affected Cases: 77
+  • Events per Hour: 3.3
+  • Peak Hour: 00:00 (9 events)
+
+Statistical Characteristics:
+  • Distribution Type: Normal-like
+  • Coefficient of Variation: 0.50
+  • Outlier Count: 0 (0.0%)
+
+Performance Assessment: 🟢 LOW - Minor performance impact
+==================================================
+
+OVERALL BASELINE ASSESSMENT:
+===================================
+• Total bottleneck events analyzed: 2,351
+• Combined time impact: 1247.5 seconds
+• Average bottleneck duration: 530.6ms
+
+OPTIMIZATION TARGETS:
+-------------------------
+Primary Target: Guardian ReadFile (highest impact)
+Secondary Target: Explorer RegQueryValue (medium complexity)
+Validation Target: Notepad ReadFile (lowest complexity)
+
+EXPECTED OPTIMIZATION POTENTIAL:
+-----------------------------------
+• Guardian ReadFile: 50-70% duration reduction possible
+• Explorer RegQueryValue: 30-50% duration reduction possible
+• Notepad ReadFile: 40-60% duration reduction possible
+• Combined potential system improvement: 35-55%

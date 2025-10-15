@@ -1,0 +1,28 @@
+{
+  "total_events": 95249,
+  "bottleneck_events": 4763,
+  "performance_impact": "28.3%",
+  "threshold_ms": "825.48ms",
+  "top_bottlenecks": [
+    [
+      "notepad.exe",
+      "WriteFile"
+    ],
+    [
+      "chrome.exe",
+      "VirtualAlloc"
+    ],
+    [
+      "chrome.exe",
+      "CreateThread"
+    ],
+    [
+      "chrome.exe",
+      "ReadFile"
+    ],
+    [
+      "guardian.exe",
+      "CreateFile"
+    ]
+  ]
+}
